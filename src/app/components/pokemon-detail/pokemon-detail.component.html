@@ -1,0 +1,8 @@
+
+<ng-container *ngIf="pokemon$|async as pokemon">
+  <p style="text-align: center"><a [href]='["/"]'> &#60; Back to list </a></p>
+  <mat-card>
+    <mat-card-title> Pokemon {{pokemon.name|uppercase}} </mat-card-title>
+    <img [src]=pokemon.sprites.back_default >
+  </mat-card>
+</ng-container>

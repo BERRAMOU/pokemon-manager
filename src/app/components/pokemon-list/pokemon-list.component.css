@@ -1,0 +1,33 @@
+a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+button {
+  border: 0;
+  margin-top: 24px;
+  min-width: 280px;
+  text-transform: none;
+  cursor: pointer;
+  display: inline-flex;
+  outline: none;
+  text-decoration: none;
+  font-size: 1.4rem;
+  justify-content: center;
+  height: 60px;
+  padding: 0 35px;
+  border-radius: 32px;
+}
+
+.next-btn, .previous-btn {
+  margin: 50px;
+  padding: 18px;
+}
+
+.next-btn {
+  float: right;
+}
+
+.previous-btn {
+  float: left;
+}
