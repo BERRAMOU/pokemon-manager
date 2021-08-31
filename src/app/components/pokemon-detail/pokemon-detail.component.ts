@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {PokemonService} from "../../services/pokemon.service";
 import {ActivatedRoute} from "@angular/router";
 import {Observable, of} from "rxjs";
-import {PokemonItem} from "../../models/pokemon";
+import {PokemonItemDetail} from "../../models/pokemon.model";
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -10,11 +10,11 @@ import {PokemonItem} from "../../models/pokemon";
   styleUrls: ['./pokemon-detail.component.css']
 })
 export class PokemonDetailComponent {
-  pokemon$: Observable<PokemonItem|null>
+  pokemon$: Observable<PokemonItemDetail|null>
 
   constructor(private pokemonService: PokemonService, private route: ActivatedRoute) {
     const id = this.route.snapshot.paramMap.get('id');
-    this.pokemon$ = id ? this.pokemonService.getPokemon(id) : of(null);
+    this.pokemon$ = id ? this.pokemonService.getPokemonById(id) : of(null);
   }
 
 }

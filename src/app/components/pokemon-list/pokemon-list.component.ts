@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {PokemonService} from "../../services/pokemon.service";
 import {Observable} from "rxjs";
-import {PokemonApiResponse} from "../../models/pokemon";
+import {PokemonApiResponse} from "../../models/pokemon.model";
 
 @Component({
   selector: 'pokemon-list',
@@ -9,18 +9,19 @@ import {PokemonApiResponse} from "../../models/pokemon";
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent {
-  pokemonResponse$: Observable<PokemonApiResponse> = this.pokemonService.getPokemons(0, 15);
+
+  pokemonResponse$: Observable<PokemonApiResponse> = this.pokemonService.getPokemons(0, 10);
   displayedColumns: string[] = ['name', 'url', 'detail'];
 
   constructor(private pokemonService: PokemonService) {}
-
+  
   /**
-   *
+   * Move to next or previous page.
+   * 
    * @param event
    */
-  moveToNextPage(event?: MouseEvent) {
+  moveToNextOrPreviousPage(event?: MouseEvent) {
     const target = event?.target as HTMLInputElement;
-    console.log(target.value);
     const paginationConf = getPaginationConf(target.value);
     this.pokemonResponse$ = this.pokemonService.getPokemons(paginationConf.offset, paginationConf.limit);
   }
